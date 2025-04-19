@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos</title>
+</head>
+<body>
+    <button id="btn">Clique aqui</button>
+    <p id="pstring">Murilo</p>
+    <p id="pnumber">4</p>
+    <p id="pboolean">false</p>
+    <p id="pobject">null</p>
+    <p id="res"></p>
+</body>
+<script>
+
+    let btn = document.getElementById("btn")
+
+    btn.addEventListener("click", function(){
+
+    
+    let pstring = String(document.getElementById("pstring").innerText)
+    let pnumber = Number(document.getElementById("pnumber").innerText)
+    let pboolean = Boolean(document.getElementById("pboolean").innerText)
+    let pobject = Object(document.getElementById("pobject").innerText)
+
+    let SN = pstring + pnumber;
+    let BO = pboolean + pobject;
+
+    let res = document.getElementById("res")
+    
+    
+    res.innerText = `O resultado da o operação entre uma sting e um número é ${SN} e o resultado de uma operação entre um boolean e um objeto é igual a ${BO}. O resultado se deu quando juntamos a string mais o número e o valor de boolean mais o valor do objeto`
+
+
+    
+    })
+
+
+</script>
+</html>

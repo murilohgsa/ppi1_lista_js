@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados no Local Storage</title>
+</head>
+<body>
+    
+    <input type="text" id="nameInput" placeholder="Digite seu nome">
+    <button id="saveButton">Salvar</button>
+    <p id="greeting"></p>
+    
+</body>
+<script>
+    let nome = document.querySelector("#nameInput")
+    let btn = document.querySelector("#saveButton")
+    let p = document.querySelector("#greeting")
+
+    let salvar = localStorage.getItem("Nome")
+    if (salvar) {
+        p.textContent = `Olá ${salvar}, como vai?`;
+        nome.value = salvar;
+    }
+    btn.addEventListener("click", function(){
+        let valor = nome.value
+        localStorage.setItem("Nome", valor)
+        p.textContent = `Olá ${valor}, como vai?`
+       
+    })
+
+
+</script>
+</html>

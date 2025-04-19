@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos em Javascript</title>
+    <style>
+        #hoverDiv{
+            width: 130px;
+        }
+    </style>
+</head>
+    <body>
+        <button id="alertButton">Clique aqui</button>
+        <input type="text" id="textInput" placeholder="Digite algo">
+        <div id="hoverDiv" >Passe o mouse aqui</div>
+        <select id="colorSelect">
+          <option value="">Escolha uma cor</option>
+          <option value="blue">Azul</option>
+          <option value="green">Verde</option>
+          <option value="red">Vermelho</option>
+        </select>
+        <p id="paragrafo"></p>
+      </body>
+      <script>
+        let btn = document.getElementById('alertButton')
+        btn.addEventListener("click" , function(){
+            alert('olá mundo!')
+        })
+        let box = []
+        let text = document.getElementById('textInput')
+        let p = document.getElementById('paragrafo')
+
+        text.addEventListener("keypress", (event)=>{
+            box.push(event.key)
+            p.textContent = `${box.join("")}`
+            
+        })
+        text.addEventListener("focus", function(){
+            text.focus()
+            text.style.backgroundColor = 'yellow'
+            
+        })
+        text.addEventListener("blur", function(){
+            text.blur()
+            text.style.backgroundColor = "white"
+        })
+
+        let hover = document.querySelector('#hoverDiv')
+
+        hover.addEventListener("mouseover", (event) =>{
+            hover.style.color = "red"
+        })
+        hover.addEventListener("mouseout", (event) =>{  
+            hover.style.color = ""
+        })
+
+        let cor = document.querySelector("#colorSelect")
+        
+        cor.addEventListener("change", () => {
+            let valor = cor.value
+            document.body.style.backgroundColor = valor
+        })
+        
+      </script>
+</html>
