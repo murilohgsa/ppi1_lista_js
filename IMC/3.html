@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMC</title>
+    <style>
+        #container{
+            display: flex;
+            flex-direction: column;
+            width: 200px;
+            gap: 10px;
+        }
+        #imgPerfil{
+            width: 150px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<h2>Insira seus dados</h2>
+<form id="container">
+<input type="text" name="txtnome" id="txtnome" placeholder="Insira seu nome..." required>
+<input type="number" name="txtpeso" id="txtpeso" step="0.1" placeholder="Insira seu peso" required>
+<input type="number" name="txtaltura" id="txtaltura" step="0.01" placeholder="Insira sua altura" required>
+<button type="submit">Enviar</button>
+</form>
+
+<div id="Qrespostas">
+    <p id="resposta"></p>
+    <img id="imgPerfil" src="perfil.jpg" alt="Imagem do perfil">
+    
+</div>
+
+</body>
+<script>
+document.getElementById('container').addEventListener('submit', function(event){
+    event.preventDefault()
+
+    var nome = String(document.getElementById('txtnome').value)
+    var peso = parseFloat(document.getElementById('txtpeso').value)
+    var altura = parseFloat(document.getElementById('txtaltura').value)
+    var res = document.getElementById("resposta")
+    var imgres = document.getElementById('imgPerfil')
+
+
+    res.innerHTML = ""
+    imgres.innerHTML = ""
+
+    if(!nome || !peso || !altura){
+        alert("Preencha todos os campos corretamente!")
+    }
+
+    var IMC = peso/(altura*altura)
+    let classificação = ""
+    let imagemSRC = ""
+    var imcarredondado = Math.floor(IMC)
+
+    switch(true){
+        case(imcarredondado<18):
+            classificação = 'Abaixo do peso'
+            imagemSRC = 'abaixopeso.png';
+            break
+        case(imcarredondado<24):
+            classificação = 'Peso normal'
+            imagemSRC = 'normal.png';
+            break
+        case(imcarredondado<29):
+            classificação = 'Sobrepeso'
+            imagemSRC = 'sobrepeso.png';
+            break
+        case(imcarredondado <34):
+            classificação = 'Obesidade grau 1'
+            imagemSRC = 'obesidade1.png';        
+            break
+        case(imcarredondado < 39):
+            classificação = 'Obesidade grau 2'
+            imagemSRC = 'obesidade2.png';
+            break
+        default:
+            classificação = 'Obesidade grau 3'  
+            imagemSRC = 'obesidade3.png';
+    }
+        res.innerHTML = `Olá <strong>${nome}</strong>, seu IMC é <strong>${IMC.toFixed(2)}</strong> (${classificação}).`;
+
+    let imagem = document.createElement('img')
+    imagem.id = 'imgPerfil'
+    imgPerfil.src = imagemSRC
+    imagem.alt = classificação
+    
+})
+</script>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de números</title>
+    <style>
+        #botão{
+         height: 20px;
+         width: 80px;   
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Sorteio de números!</h1>
+    <label for="minimo">Mínimo</label>
+    <input type="number" id="minimo" value="1" required>
+    <label for="maximo">Máximo</label>
+    <input type="number" id="maximo" value="100" required>
+    <button onclick="sortear()">Sortear</button>
+    <p id="resp">Resposta</p>
+    <h2>Números sorteados</h2>
+    <ul id="lista"></ul>
+<script>
+    let sorteados = []
+    function sortear(){
+    var min = Number(document.getElementById("minimo").value)
+    var max = Number(document.getElementById("maximo").value)
+    var res = document.getElementById('resp')
+
+    if (!min || !max || min > max) {
+        alert("Preencha os campos vazios ou deixe o mínimo menor")
+        return;
+    }
+    let numero = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    let existente = sorteados.find(item=>item.numero === numero)
+    if(existente){
+        existente.contador++
+    }else{
+        sorteados.push({numero:numero,contador:1})
+    }
+    resp.innerHTML =("Número sorteado: " + numero);
+    
+    listaatualizada()
+    }
+
+function listaatualizada(){
+    let ul = document.getElementById("lista")
+    ul.innerHTML = ""
+
+    sorteados.sort((a, b)=>a.numero - b.numero)
+
+    for (let item of sorteados){
+        let li = document.createElement("li")
+        li.textContent = `${item.numero} (sorteado ${item.contador}x)`
+        ul.appendChild(li)
+    }
+}
+    
+
+    
+</script>
+</html>
