@@ -5,13 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora</title>
     <style>
-
+        body{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: palegoldenrod;
+        }
+        #container{
+            width: 300px;
+            height: 400px;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        #Divresultado{
+            border: 1px solid black;
+            width: 300px;
+            height: 70px;
+            background-color: gray;
+            color: white;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        #Divbot{
+            border: 1px solid black;
+            width: 300px;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            background-color: paleturquoise;
+            border-radius: 5px;
+        }
+        #Divigual{
+            width: 300px;
+            height: 80px;
+            border-radius: 5px;
+        }
+        #Divigual button{
+            width: 300px;
+            height: 80px;
+            font-size: xx-large;
+            background-color: palegreen;
+        }
+        #Divbot button{
+            width: 70px;
+            height: 60px;
+            font-size: large;
+        }
+        #resultado{
+            font-size: 30px;
+            float: right;
+        }
     </style>
 </head>
 <body>
-    
+    <div id="container">
+        <div id="Divresultado">
+            <p id="resultado">0</p>
+        </div>
+        <div id="Divbot">
+            <button value="+">+</button>
+            <button value="-">-</button>
+            <button value="*">x</button>
+            <button value="/">/</button>
+            <button value="0">0</button>
+            <button value="1">1</button>
+            <button value="2">2</button>
+            <button value="3">3</button>
+            <button value="4">4</button>
+            <button value="5">5</button>
+            <button value="6">6</button>
+            <button value="7">7</button>
+            <button value="8">8</button>
+            <button value="9">9</button>
+            <button value=".">.</button>
+            <button value="AC">AC</button>
+        </div>
+        <div id="Divigual">
+            <button value="=">=</button>
+        </div>
+    </div>
 </body>
 <script>
+     let res = document.querySelector("#resultado");
+        let botoes = document.querySelectorAll("button");
 
+        let apagar = "";
+
+        botoes.forEach(botao => {
+            botao.addEventListener('click', () => {
+                let valor = botao.value;
+
+                if (valor === "AC") {
+                    apagar = "";
+                    res.textContent = "0";
+                } else if (valor === "=") {
+                    try {
+                        let resfim = eval(apagar);
+                        res.textContent = resfim;
+                        apagar = resfim.toString();
+                    }catch {
+                        res.textContent = "Erro";
+                        apagar = "";
+                    }
+                } else {
+                    apagar += valor;
+                    res.textContent = apagar;
+                }
+            });
+        });
 </script>
 </html>

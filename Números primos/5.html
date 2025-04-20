@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de números primos</title>
+    <style>
+        #container{
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            gap: 10px;
+        }
+        #resultadoPrimos{
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <h3>Adicione os números:</h3>
+    <div id="container">
+        <input type="number" name="nummin" id="nummin" placeholder="Número inicial">
+        <input type="number" name="nummax" id="nummax" placeholder="Número final">
+        <button id="botao">Verificar</button>
+    </div>
+    <div id="resultadoPrimos">
+        
+    </div>
+</body>
+<script>
+    let btn = document.getElementById('botao')
+
+    function numprim(n){
+        if(n <= 1) return false
+        if(n === 2) return true
+        if(n % 2 === 0) return false
+
+        for(let i = 3; i <= Math.sqrt(n); i+=2){
+            if(n % i === 0) return false
+        }
+        return true;
+    }
+
+    btn.addEventListener('click', function(){
+        let nmax = Number(document.getElementById('nummax').value)
+        let nmin = Number(document.getElementById('nummin').value)
+        let res = document.getElementById('resultadoPrimos')
+        res.innerHTML = '';
+        let conta = 0
+
+        if(nmin > nmax){
+            alert('Número inicial deve ser menor que o número posterior')
+        }
+
+
+        for(let i = nmin; i<=nmax; i++){
+            if(numprim(i)) {
+                let p = document.createElement('p');
+                p.textContent = `${i} é número primo`;
+                res.appendChild(p);
+                conta++;
+
+            }
+            
+        }
+        let span = document.createElement('span')
+        span.textContent = `Existem ${conta} números primos dentro desse intervalo`
+        res.appendChild(span)
+    });
+</script>
+</html>

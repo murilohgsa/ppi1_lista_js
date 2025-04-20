@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O que é Javascript?</title>
+    <style>
+        #divtit{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="divtit">
+        <h1 id="titulo principal">O que é Javascript?</h1>
+    </div>
+    <h3 id="titulo1">Qual foi a motivação para criar o Javascript?</h3>
+    <p id="paragrafo1">
+        ​A motivação para a criação do JavaScript surgiu no contexto da necessidade de tornar as páginas web mais dinâmicas e interativas. Nos anos 90, o HTML era estático e não oferecia recursos para criar experiências ricas para os usuários. A Netscape, uma das pioneiras na navegação web, percebeu que era necessário adicionar elementos dinâmicos às páginas, permitindo interações como validação de formulários e manipulação de conteúdo sem a necessidade de recarregar a página inteira. Para atender a essa demanda, em 1995, a empresa contratou Brendan Eich para desenvolver uma linguagem de script que possibilitasse essas funcionalidades. Assim nasceu o JavaScript, inicialmente chamado de LiveScript, com o objetivo de complementar o HTML e proporcionar uma experiência mais interativa aos usuários na web.
+    </p>
+    <h3 id="titulo2">Qual a diferença entre execução no navegador e no servidor?</h3>
+    <p id="paragrafo2">A execução de código no navegador e no servidor difere principalmente no local e propósito da execução. No navegador, o código é executado diretamente na máquina do usuário, geralmente com JavaScript, e tem como objetivo interatividade e manipulação da interface do usuário. Isso permite uma experiência rápida e dinâmica, mas o código pode ser acessado e modificado pelo usuário, o que pode representar um risco de segurança.</p>
+    <h3 id="titulo3">Qual é o conceito de sandbox no navegador?</h3>
+    <p id="paragrafo3">O conceito de sandbox no navegador refere-se a uma técnica de segurança que isola a execução de scripts e conteúdos potencialmente perigosos dentro de um ambiente restrito e controlado, para evitar que esses conteúdos afetem negativamente o sistema do usuário ou acessem recursos não autorizados.</p>
+    
+    <p id="hora"></p>
+</body>
+<script>
+    let nome = prompt("Escreva seu nome: ")
+    if(nome == "" || nome == null){
+        nome = "Desconhecido"
+    }
+    alert(`Olá ${nome}, seja bem vindo!`)
+    console.log(typeof(nome))
+    let hora = document.getElementById("hora")
+    horas = new Date();
+    hora.innerHTML = `${horas}`
+</script>
+</html>

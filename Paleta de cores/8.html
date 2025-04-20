@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterando as cores</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        .box{
+            border: 1px solid black;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box" id="box1">
+            <p class="p">item1</p>
+        </div>
+        <div class="box" id="box2">
+            <p class="p">item2</p>
+        </div>
+        <div class="box" id="box3">
+            <p class="p">item3</p>
+        </div>
+        <div class="box" id="box4">
+            <p class="p">item4</p>
+        </div>
+        <div class="box" id="box5">
+            <p class="p">item5</p>
+        </div>
+    </div>
+</body>
+<script>
+    let box = document.querySelector('.container')
+    
+    addEventListener("keypress" , function(event){
+
+        if(event.code === 'Space'){
+        
+            let caixas = document.querySelectorAll('.container .box');
+            let cores = []
+               let ant = '#'
+               for (let i = 0; i < caixas.length; i++) {
+                let cor =  ant+ Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6, '0');
+                cores.push(cor)
+            }
+            for(let i = 0; i<caixas.length; i++){
+                let p = document.querySelector(`#box${i + 1}`);
+                p.innerHTML = `${cores[i]}`
+            }
+            caixas.forEach((box, index) =>{
+            box.style.backgroundColor = cores[index];
+            
+            })
+        }
+    })
+
+</script>
+</html>

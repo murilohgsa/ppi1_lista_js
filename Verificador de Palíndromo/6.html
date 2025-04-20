@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palíndromo</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h3>Escreva uma palavra:</h3>
+    <input type="text" name="txtpalavra" id="txtpalavra">
+    <button id="btn">Verificar</button>
+    <div id="divresposta">
+        
+    </div>
+</body>
+<script>
+   
+
+    btn.addEventListener("click" , function(){
+        let palavra = String(document.getElementById("txtpalavra").value)
+        let btn = document.getElementById("btn")
+        let res = document.getElementById("divresposta")
+        let invertido = palavra.split('').reverse().join('')
+        
+        if(invertido === palavra){
+            res.innerHTML =`A palavra ${palavra} é palíndromo!`
+        }else{
+            res.innerHTML =`A palavra ${palavra} não é palíndromo!`
+        }
+    })

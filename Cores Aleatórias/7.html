@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cor Aleatória</title>
+    <style>
+        body{
+            width: 100vw;
+            height: 100vh;
+            background-color: white;
+        }
+        div{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body id="fundo">
+    <div>
+        <button id="btn">Alterar a cor</button>
+        <p id="res"></p>
+    </div>
+</body>
+<script>
+    let btn = document.getElementById('btn')
+    let fundo = document.getElementById('fundo')
+    let res = document.getElementById('res')
+    btn.addEventListener("click", function(){
+        let ant = '#'
+        let nalet = ant+Math.floor(Math.random()*0xFFFFFF).toString(16).padStart(6,'0')
+        fundo.style.backgroundColor = `${nalet}`
+        
+    });
+</script>
+</html>
